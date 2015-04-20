@@ -11,8 +11,7 @@
   <param name="offset" type="float" min="0" max="1" precision="2" _gui-text="Offset">0.36</param>
   <param name="symmetrical" type="boolean" _gui-text="Symmetrical Offset">false</param>
   <param name="oval" type="boolean" _gui-text="Oval Holes">false</param>
-  <param name="tip" type="description">Tip: For highest accuracy in Inkscape change panel object's STROKE WIDTH to 0 and set VIEW->DISPLAY MODE->OUTLINE.</param>
- 
+  <param name="centers" type="boolean" _gui-text="Mark Hole Centers">false</param>
   <effect>
     <object-type>all</object-type>
       <effects-menu>
