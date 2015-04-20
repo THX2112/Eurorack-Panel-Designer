@@ -1,4 +1,4 @@
-Eurorack Panel Designer v1
+Eurorack Panel Designer v2
 
 Unarchive and copy files to Inkscape's "extensions" directory (usually inkscape/share/extensions).
 
