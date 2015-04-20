@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <_name>Eurorack Panel Designer</_name>
+  <id>com.syinsi.thx2112.EurorackPanelDesigner</id>
+  
+  <dependency type="executable" location="extensions">inkex.py</dependency>
+  <dependency type="executable" location="extensions">EurorackPanelDesigner.py</dependency>
+  
+  <param name="hp" type="int" min="2" max="64" _gui-text="HP">6</param>
+  <param name="calc" type="description">Set "offset" value for Doepfer-style calculations (.3mm to .4mm), or choose "symmetrical" option for even 7.5mm spacing at edges.</param>
+  <param name="offset" type="float" min="0" max="1" precision="2" _gui-text="Offset">0.36</param>
+  <param name="symmetrical" type="boolean" _gui-text="Symmetrical Offset">false</param>
+  <param name="oval" type="boolean" _gui-text="Oval Holes">false</param>
+  <param name="tip" type="description">Tip: For highest accuracy in Inkscape change panel object's STROKE WIDTH to 0 and set VIEW->DISPLAY MODE->OUTLINE.</param>
+ 
+  <effect>
+    <object-type>all</object-type>
+      <effects-menu>
+        <submenu _name="Render"/>
+      </effects-menu>
+  </effect>
+  <script>
+    <command reldir="extensions" interpreter="python">EurorackPanelDesigner.py</command>
+  </script>
+</inkscape-extension>
