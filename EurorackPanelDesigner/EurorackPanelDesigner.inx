@@ -12,7 +12,6 @@
   <param name="symmetrical" type="boolean" _gui-text="Symmetrical Offset">false</param>
   <param name="oval" type="boolean" _gui-text="Oval Holes">false</param>
   <param name="centers" type="boolean" _gui-text="Mark Hole Centers">false</param>
-  
   <effect>
     <object-type>all</object-type>
       <effects-menu>
