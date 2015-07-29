@@ -2,7 +2,7 @@
 # 
 # Eurorack Panel Designer by THX2112
 #
-# v2
+# v3
 #
 
 import sys
@@ -53,12 +53,31 @@ class EurorackPanelEffect(inkex.Effect):
 
         pheight = self.unittouu(str(height) + self.options.unit)
         pwidth = self.unittouu(str(width) + self.options.unit)
+
+        def draw_SVG_Panel((w,h), (x,y), (rx,ry), parent):
+
+                style = {   'stroke'        : 'none',
+                            'stroke-width'  : '0mm',
+                            'fill'          : '#e6e6e6'
+                }
+                
+                attribs = {
+                    'style'     : formatStyle(style),
+                    'height'    : str(h),
+                    'width'     : str(w),
+                    'x'         : str(x),
+                    'y'         : str(y),
+                    'rx'        : str(rx),
+                    'ry'        : str(ry)
+                }
+
+                circ = inkex.etree.SubElement(parent, inkex.addNS('rect','svg'), attribs)
         
         def draw_SVG_square((w,h), (x,y), (rx,ry), parent):
 
-                style = {   'stroke'        : '#000000',
-                            'stroke-width'  : '.05mm',
-                            'fill'          : 'none'
+                style = {   'stroke'        : 'none',
+                            'stroke-width'  : '0mm',
+                            'fill'          : '#ffffff'
                 }
                 
                 attribs = {
@@ -74,7 +93,10 @@ class EurorackPanelEffect(inkex.Effect):
                 circ = inkex.etree.SubElement(parent, inkex.addNS('rect','svg'), attribs)
 
         #parent = self.current_layer
-        draw_SVG_square((pwidth,pheight), (0,0), (0,0), grp) #grp was parent
+
+        # Draw Panel
+
+        draw_SVG_Panel((pwidth,pheight), (0,0), (0,0), grp) #grp was parent
 
 
 
@@ -91,7 +113,7 @@ class EurorackPanelEffect(inkex.Effect):
         #draw an SVG line segment between the given (raw) points
         def draw_SVG_line( (x1, y1), (x2, y2), parent):
             line_style   = {    'stroke': '#000000',
-                                'stroke-width':'.05mm',
+                                'stroke-width':'.01mm',
                                 'fill': 'none'
                             }
 
@@ -110,9 +132,9 @@ class EurorackPanelEffect(inkex.Effect):
 
             def draw_SVG_ellipse((rx, ry), (cx, cy), parent, start, end):
                 style = {   
-                            'stroke'        : '#000000',
-                            'stroke-width'  : '.05mm',
-                            'fill'          : 'none'            
+                            'stroke'        : 'none',
+                            'stroke-width'  : '0mm',
+                            'fill'          : '#ffffff'            
                         }
                 ell_attribs = {'style':formatStyle(style),
                     inkex.addNS('cx','sodipodi')        :str(cx),
