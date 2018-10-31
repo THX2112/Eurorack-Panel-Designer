@@ -3,3 +3,5 @@ Eurorack Panel Designer
 Unarchive and copy files to Inkscape's "extensions" directory (usually inkscape/share/extensions).
 
 Extension will show up in Inkscape under Extensions->Render->Eurorack Panel Designer.
+
+To install on MacOS place EurorackPanelDesigner.inx and EurorackPanelDesigner.py inside ~/.config/inkscape/extensions.
