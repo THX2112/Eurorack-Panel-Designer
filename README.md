@@ -12,4 +12,7 @@ more info: https://en.wikipedia.org/wiki/Eurorack
 Appears in:
 Extensions->Render->Eurorack Panel Designer
 
+Installation - Navigate to Edit/Preferences and look for the User Extensions folder.
+Deposit unzipped files (inx and py) into that folder.
+
 

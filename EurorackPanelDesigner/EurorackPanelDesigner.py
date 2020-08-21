@@ -2,9 +2,11 @@
 #
 # Eurorack Panel Designer by THX2112
 #
-# v4
+# v6
 # - reference: http://www.doepfer.de/a100_man/a100m_e.htm
 # Adds lasercutting color and refactoring
+# Add 1U panel height - https://github.com/rackommended/Eurorack-Panel-Designer
+# Migrate inkscape 1.0 - 
 
 import sys
 import math
@@ -24,12 +26,13 @@ class EurorackPanelEffect(inkex.Effect):
 	def __init__(self):
 		inkex.Effect.__init__(self)
 
-		self.arg_parser.add_argument('-t', '--hp',       type=int,   dest='hp',     default=6,    help='Panel HP?')
-		self.arg_parser.add_argument('-o', '--offset',   type=float, dest='offset', default=0.36, help='Amount of material to remove for fitting?')
-		self.arg_parser.add_argument('-s', '--symmetry', type=inkex.Boolean, dest='symmetry', default='False', help='Remove material from both sides?')
-		self.arg_parser.add_argument('-v', '--oval',     type=inkex.Boolean, dest='oval',     default='False', help='Oval holes?')
-		self.arg_parser.add_argument('-c', '--centers',  type=inkex.Boolean, dest='centers',  default='False', help='Mark centers?')
-		self.arg_parser.add_argument('-l', '--lasercut', type=inkex.Boolean, dest='lasercut', default='False', help='Lasercut style?')
+		self.arg_parser.add_argument('-t', '--hp',       type=int,   dest='hp',     default=6,    help='Panel HP')
+		self.arg_parser.add_argument('-e', '--height', 	 type=float, dest='height', default='128.5', help='Panel height')
+		self.arg_parser.add_argument('-o', '--offset',   type=float, dest='offset', default=0.36, help='Amount of material to remove for fitting')
+		self.arg_parser.add_argument('-s', '--symmetry', type=inkex.Boolean, dest='symmetry', default='False', help='Remove material from both sides')
+		self.arg_parser.add_argument('-v', '--oval',     type=inkex.Boolean, dest='oval',     default='False', help='Oval holes')
+		self.arg_parser.add_argument('-c', '--centers',  type=inkex.Boolean, dest='centers',  default='False', help='Mark centers')
+		self.arg_parser.add_argument('-l', '--lasercut', type=inkex.Boolean, dest='lasercut', default='False', help='Lasercut style')
 
 	def draw_SVG_Panel(self, dimensions, center, radius, parent):
 		" Draw the Basic Panel Shape"
@@ -133,7 +136,7 @@ class EurorackPanelEffect(inkex.Effect):
 
 
 	def effect(self):
-
+		#
 		hp = self.options.hp
 		symmetry = self.options.symmetry
 		offset   = self.options.offset
@@ -142,7 +145,7 @@ class EurorackPanelEffect(inkex.Effect):
 		unitfactor = self.svg.unittouu('1mm') # all our dimensions are in mm
 
 		# Dimensions
-		height = 128.5 # mm
+		height = self.options.height	 # mm
 		if symmetry:
 			width = 7.5 + ((hp - 3) * 5.08) + 7.5
 		else:
@@ -165,17 +168,17 @@ class EurorackPanelEffect(inkex.Effect):
 
 		# Draw Holes
 		TopHoles = 3.0
-		BottomHoles = 125.5
+		BottomHoles = height - 3.0 #125.5
 		LeftHoles = 7.5
 		RightHoles = ((hp - 3.0) * 5.08) + 7.5
 		HoleRadius = 1.6
 		#
-		leftH = LeftHoles * unitfactor
-		rightH = RightHoles * unitfactor
+		leftH   = LeftHoles * unitfactor
+		rightH  = RightHoles * unitfactor
 		bottomH = BottomHoles * unitfactor
-		topH = TopHoles * unitfactor
+		topH  = TopHoles * unitfactor
 		holeR = HoleRadius * unitfactor
-		gap = holeR/2
+		gap   = holeR/2
 		#
 		if not oval:  # Draw Round holes
 			rx = HoleRadius * unitfactor
