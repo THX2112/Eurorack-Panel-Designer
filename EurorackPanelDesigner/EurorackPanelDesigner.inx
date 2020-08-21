@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
-  <_name>Eurorack Panel Designer</_name>
-  <id>com.syinsi.thx2112.EurorackPanelDesigner</id>
-  
-  <dependency type="executable" location="extensions">inkex.py</dependency>
+  <name>Eurorack Panel Designer</name>
+  <id>inkscape.thx2112.EurorackPanelDesigner</id>
   <dependency type="executable" location="extensions">EurorackPanelDesigner.py</dependency>
-  <dependency type="executable" location="extensions">simplestyle.py</dependency>
   
-  <param name="desc_unit" type="description">Eurorack Panel maker:</param>
+  <label>Eurorack Panel:</label>
+  <param name="desc_unit" type="description">(Eurorack panels are 128.5mm high)</param> 
   <param name="desc_unit" type="description">Width is in HP (Horizontal Pitch)</param>
   <param name="desc_unit" type="description"> (Panels are usually defined in units of 2)</param>
-  <param name="hp" type="int" min="2" max="64" _gui-text="HP">6</param>
-  <param name="symmetrical" type="boolean" _gui-text="Symmetrical Offset">false</param>
+  <param name="hp" type="int" min="2" max="64" indent="1" gui-text="HP">6</param>
+  <param name="lasercut" type="bool" indent="1" gui-text="Use Lasercut styling">false</param>
+  <vbox>
+  <label>Mounting Holes:</label>
   <param name="desc_unit" type="description">If Symmetrical then holes are 7.5mm from either side.</param>
-  <param name="desc_unit" type="description">Otherwise Offset cuts in from RHS.</param>
-  <param name="desc_unit" type="description">Doepfer-style calculations use value of 0.3mm to 0.4mm.</param>
-  <param name="offset" type="float" min="0" max="1" precision="2" _gui-text="Offset">0.36</param>
-  <param name="oval" type="boolean" _gui-text="Oval Holes">false</param>
-  <param name="centers" type="boolean" _gui-text="Mark Hole Centers">false</param>
-  <param name="lasercut" type="boolean" _gui-text="Use Lasercut styling">false</param>
+  <param name="symmetry"  type="bool" indent="1" gui-text="Symmetrical Offset">false</param>
+  <param name="desc_unit" type="description" indent="1">Otherwise - Offset measured in from RHS.</param>
+  <param name="desc_unit" type="description" indent="1">Doepfer-style calculations use value of 0.3mm to 0.4mm.</param>
+  <param name="offset"    type="float" min="0" max="1" precision="2" indent="2" gui-text="Offset(mm):">0.36</param>
+  <param name="oval"     type="bool" gui-text="Oval Holes">false</param>
+  <param name="centers"  type="bool" gui-text="Mark Hole Centers">false</param>
+  </vbox>
     <effect>
     <object-type>all</object-type>
       <effects-menu>
-        <submenu _name="Render"/>
+        <submenu name="Render"/>
       </effects-menu>
   </effect>
   <script>
-    <command reldir="extensions" interpreter="python">EurorackPanelDesigner.py</command>
+    <command location="inx" interpreter="python">EurorackPanelDesigner.py</command>
   </script>
 </inkscape-extension>
