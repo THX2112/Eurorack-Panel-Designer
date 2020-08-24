@@ -23,3 +23,5 @@ Mac OS X:
 
 
 Extension will show up in Inkscape under Extensions->Render->Eurorack Panel Designer.
+
+To install on MacOS place EurorackPanelDesigner.inx and EurorackPanelDesigner.py inside ~/.config/inkscape/extensions.
